@@ -30,12 +30,18 @@ tasks {
         sourceDir = file('src/docs/asciidoc')
         outputDir = file('src/main/resources/static/restdocs')
 
-        attributes 'snippets': file('build/snippets')
+        options doctype: 'book'
+
+        attributes 'snippets': file('build/snippets'),
+                   'source-highlighter': 'coderay',
+                    toc                 : 'left',
+                    idprefix            : '',
+                    idseparator         : '-'
     }
 
     asciidoctor.doFirst {
         println "=====start asciidoctor"
-        delete 'src/main/resources/static/restdocs'
+        delete 'src/main/resources/static/restdocs/html5'
     }
     asciidoctor.doLast {
         println "=====finish asciidoctor"
