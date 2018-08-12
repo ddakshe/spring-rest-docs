@@ -435,20 +435,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="title">request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET / HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /students HTTP/1.1
 Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/' -i -X GET</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/students' -i -X GET</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">httpie-request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ http GET 'http://localhost:8080/'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ http GET 'http://localhost:8080/students'</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -468,22 +468,55 @@ Host: localhost:8080</code></pre>
 <div class="title">response</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Content-Type: text/plain;charset=UTF-8
-Content-Length: 5
+Content-Type: application/json;charset=UTF-8
+Content-Length: 150
 
-hello</code></pre>
+[{"id":1,"name":"John","age":15,"gender":"male"},{"id":2,"name":"Jane","age":19,"gender":"female"},{"id":3,"name":"Jameson","age":20,"gender":"male"}]</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">response-body</div>
 <div class="content">
-<pre class="highlight nowrap"><code>hello</code></pre>
+<pre class="highlight nowrap"><code>[{"id":1,"name":"John","age":15,"gender":"male"},{"id":2,"name":"Jane","age":19,"gender":"female"},{"id":3,"name":"Jameson","age":20,"gender":"male"}]</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<div class="title">response-fields</div>
-<p>Unresolved directive in index.adoc - include::/Volumes/Mango/workspaces/<em>java</em>/java8/springstudy/build/snippets/home/response-fields.adoc[]</p>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. response-fields</caption>
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Path</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].id</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Student identifier</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].name</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the student</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].age</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The ageof the student</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[].gender</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The gender of the student</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>As you can see the format is very simple, and in fact you always get the same message.</p>
 </div>
@@ -492,7 +525,7 @@ hello</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-12 14:23:26 +09:00
+Last updated 2018-08-12 17:02:02 +09:00
 </div>
 </div>
 </body>

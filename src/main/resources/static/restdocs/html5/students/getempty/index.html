@@ -435,21 +435,46 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="listingblock">
 <div class="title">request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /greeting HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /students?namelike=gon&amp;age=1 HTTP/1.1
 Host: localhost:8080</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">curl-request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/greeting' -i -X GET</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ curl 'http://localhost:8080/students?namelike=gon&amp;age=1' -i -X GET</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">httpie-request</div>
 <div class="content">
-<pre class="highlight"><code class="language-bash" data-lang="bash">$ http GET 'http://localhost:8080/greeting'</code></pre>
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ http GET 'http://localhost:8080/students?namelike=gon&amp;age=1'</code></pre>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_request_parameters">Request parameters</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Parameter</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>age</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">나이 조건</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>namelike</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">이름 like 검색</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="_request_body">Request body</h3>
@@ -469,15 +494,15 @@ Host: localhost:8080</code></pre>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
 Content-Type: application/json;charset=UTF-8
-Content-Length: 45
+Content-Length: 2
 
-{"id":2,"name":null,"content":"Hello, null!"}</code></pre>
+[]</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">response-body</div>
 <div class="content">
-<pre class="highlight nowrap"><code>{"id":2,"name":null,"content":"Hello, null!"}</code></pre>
+<pre class="highlight nowrap"><code>[]</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all spread">
@@ -496,19 +521,9 @@ Content-Length: 45
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>id</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Number</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Just sequence</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>name</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the user</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>content</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>String</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The welcome message for the user.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Array</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Student list</p></td>
 </tr>
 </tbody>
 </table>
@@ -520,7 +535,7 @@ Content-Length: 45
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2018-08-12 14:21:37 +09:00
+Last updated 2018-08-12 17:37:51 +09:00
 </div>
 </div>
 </body>

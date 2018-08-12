@@ -28,23 +28,17 @@ tasks {
     asciidoctor {
         dependsOn test
         sourceDir = file('src/docs/asciidoc')
-        outputDir = file('src/docs/asciidoc')
+        outputDir = file('src/main/resources/static/restdocs')
 
         attributes 'snippets': file('build/snippets')
     }
 
     asciidoctor.doFirst {
         println "=====start asciidoctor"
-        delete 'src/docs/asciidoc/html5'
-        delete 'src/main/resources/static/rest-api-docs/'
+        delete 'src/main/resources/static/restdocs'
     }
     asciidoctor.doLast {
-        copy {
-            from 'src/docs/asciidoc/html5'
-            into 'src/main/resources/static/rest-api-docs'
-        }
         println "=====finish asciidoctor"
-
     }
 
     bootJar {

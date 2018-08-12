@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>REST API Documentation</title>
+    <style>
+        object {
+            position: fixed;
+            left: 300px;
+            height: 100%;
+            width: 100%
+        }
+    </style>
+</head>
+<body>
+    <header style="height:30px;width:100%;z-index:2;">
+
+    </header>
+    <nav style="position:fixed;top:0;width:300px;height:100%;z-index:1;">
+        <div>
+            <ul>
+                <li> <a href="#" onclick="getPage('/home');">HOME</a> </li>
+                <li> <a href="#" onclick="getPage('/students/get');">GET students</a> </li>
+            </ul>
+        </div>
+    </nav>
+    <section id="content" style="width:100%;height:100%;"></section>
+    <footer>
+
+    </footer>
+
+    <script>
+        var _ = {};
+        _.curry = function(fn) {
+            return function(a) {
+              return (arguments.length == 2) ? fn(arguments[0], arguments[1]) : function(b) {
+                  return fn(a, b);
+              };
+            };
+        };
+
+        _.curryr = function(fn) {
+            return function(a) {
+              return (arguments.length == 2) ? fn(arguments[0], arguments[1]) : function(b) {
+                  return fn(b, a);
+              }
+            };
+        };
+
+        _.get = function(obj, prop) {
+            return obj[prop] || undefined;
+        };
+
+        var getPage = _.curryr(function(location, elId) {
+
+            var old = document.querySelector('#contentDetail');
+            location = location || '';
+
+            var prefix = '/restdocs/html5';
+            var suffix = '/index.html';
+            var obj = document.createElement('object');
+            obj.id = 'contentDetail';
+            obj.type = 'text/html';
+            obj.data = prefix + location + suffix;
+            old && document.getElementById(elId).removeChild(old);
+            document.getElementById(elId).appendChild(obj);
+        })('content');
+
+
+    </script>
+</body>
+</html>

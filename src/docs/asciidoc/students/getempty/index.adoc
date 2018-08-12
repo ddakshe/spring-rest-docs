@@ -1,0 +1,35 @@
+= Spring REST Docs 시작하기
+
+Srping REST Docs 예제
+
+== API 요청하기
+.request
+include::{snippets}/students/getempty/http-request.adoc[]
+
+.curl-request
+include::{snippets}/students/getempty/curl-request.adoc[]
+
+.httpie-request
+include::{snippets}/students/getempty/httpie-request.adoc[]
+
+=== Request parameters
+include::{snippets}/students/getempty/request-parameters.adoc[]
+
+=== Request body
+include::{snippets}/students/getempty/request-body.adoc[]
+
+
+== API 응답결과
+
+.response
+include::{snippets}/students/getempty/http-response.adoc[]
+
+.response-body
+include::{snippets}/students/getempty/response-body.adoc[]
+
+.response-fields
+include::{snippets}/students/getempty/response-fields.adoc[]
+
+
+
+As you can see the format is very simple, and in fact you always get the same message.

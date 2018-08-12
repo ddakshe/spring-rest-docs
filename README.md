@@ -40,7 +40,7 @@ public class GreetingControllerTest {
 
 ### How to generate HTML5 documents
 
-```build.gradle``` 에 명시된 asciidoctor task를 실행하면 ```/src/docs/asciidoc``` 하위의 템플릿 파일에 맞춰 ```/src/main/resources/static/rest-api-docs```에 HTML 문서를 생성한다.
+```build.gradle``` 에 명시된 asciidoctor task를 실행하면 ```/src/docs/asciidoc``` 하위의 템플릿 파일에 맞춰 ```/src/main/resources/static/restdocs```에 HTML 문서를 생성한다.
  
 ```bash
 gradle asciidoctor
