@@ -1,0 +1,71 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.3.RELEASE")
+        classpath("org.asciidoctor:asciidoctor-gradle-plugin:1.5.3")
+
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'org.asciidoctor.convert'
+
+
+springBoot {
+    mainClassName = 'net.sshplendid.examples.spring.Application'
+}
+
+
+
+tasks {
+    asciidoctor {
+        dependsOn test
+        sourceDir = file('src/docs/asciidoc')
+        outputDir = file('src/docs/asciidoc')
+
+        attributes 'snippets': file('build/snippets')
+    }
+
+    asciidoctor.doFirst {
+        println "=====start asciidoctor"
+        delete 'src/docs/asciidoc/html5'
+        delete 'src/main/resources/static/rest-api-docs/'
+    }
+    asciidoctor.doLast {
+        copy {
+            from 'src/docs/asciidoc/html5'
+            into 'src/main/resources/static/rest-api-docs'
+        }
+        println "=====finish asciidoctor"
+
+    }
+
+    bootJar {
+        baseName = 'sshplendid-study-spring-boot'
+        version =  '0.1.0'
+
+        dependsOn asciidoctor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'org.assertj', name: 'assertj-core-java8', version: '1.0.0m1'
+    testCompile("org.springframework.restdocs:spring-restdocs-mockmvc")
+}
+
